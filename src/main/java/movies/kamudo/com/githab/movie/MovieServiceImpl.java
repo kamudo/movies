@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
