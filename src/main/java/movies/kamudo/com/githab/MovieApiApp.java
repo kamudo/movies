@@ -22,13 +22,12 @@ public class MovieApiApp {
 	}	
 	
 	 public Executor getAsyncExecutor() {
-	        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-	        executor.setCorePoolSize(2);
-	        executor.setMaxPoolSize(2);
-	        executor.setQueueCapacity(500);
-	        executor.setThreadNamePrefix("MovieAppRest-");
-	        executor.initialize();
-	        return executor;
-	    }
-
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(2);
+        executor.setMaxPoolSize(2);
+        executor.setQueueCapacity(500);
+        executor.setThreadNamePrefix("MovieAppRest-");
+        executor.initialize();
+        return executor;
+    }
 }
