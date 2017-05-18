@@ -13,13 +13,11 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 
-import movies.kamudo.com.githab.comment.Comment;
-
 @Service
 public class MovieServiceImpl implements MovieService{
 
 	//Least Frequently Used (LFU) caching strategy implementation 
-	private int MAX_LFU_CACHE_SIZE = 3;
+	//private int MAX_LFU_CACHE_SIZE = 3;
 	private List<Movie> lfuCache = Collections.synchronizedList(new ArrayList<Movie>());
 	private HashMap<String, Integer> lfuCacheRequestCount = new HashMap<String, Integer>();
 
@@ -81,7 +79,7 @@ public class MovieServiceImpl implements MovieService{
 			result =  movieDB.stream().filter(m -> m.getId().equals(id)).findFirst();
 			
 			//TODO: Work out if result should be added in the lfuCache based on lfuCacheRequestCount
-			//The maximum size of the cache is specified by MAX_LFU_CACHE_SIZE
+			//The maximum size of the cache is specified by the commented out MAX_LFU_CACHE_SIZE
 			//Update cache accordingly.
 		}
 		
