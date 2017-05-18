@@ -1,6 +1,8 @@
 package movies.kamudo.com.githab.movie;
 
-import java.util.List;
+import java.util.concurrent.Future;
+
+import org.apache.commons.lang3.tuple.Pair;
 
 public interface MovieService {
 	
@@ -9,21 +11,24 @@ public interface MovieService {
 	 * @param id
 	 * @return Movie
 	 */
-	public Movie getMovie(String id);
+	public Future<Pair<Integer, ?>> getMovie(String id);
 	
 	/**
 	 * Adding new movie to "MovieDB"
 	 * @param movie
-	 * @return Success Code returned:  
-	 *  409 Conflict - returned if a given movie already exist with movie.id.
-	 *  500 Internal Error - returned if error during the add operation.
-	 *  201 Created - returned when the new movie was successfully added.
+	 * @return Pair <SuccessCode, Movie>
+	 *  returned: 
+	 *  Success Code 
+	 *  	409 Conflict - returned if a given movie already exist with movie.id.
+	 *  	500 Internal Error - returned if error during the add operation.
+	 *  	201 Created - returned when the new movie was successfully added.
+	 *  Movie Itself
 	 */
-	public int ddMovie(final Movie movie);
+	public Future<Pair<Integer, ?>> ddMovie(final Movie movie);
 
 	/**
 	 * Gets all movies
 	 * @return List<Movie>
 	 */
-	public List<Movie> getMovies();
+	public Future<Pair<Integer, ?>> getMovies();
 }

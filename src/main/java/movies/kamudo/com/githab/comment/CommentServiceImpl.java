@@ -3,8 +3,12 @@ package movies.kamudo.com.githab.comment;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.tuple.Pair;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,24 +23,34 @@ public class CommentServiceImpl implements CommentService {
 			new Comment("2", "user3", "Very entertaning")
 			)); 
 	
-	
-	public List<Comment> getAllCommentsForMovie(String movieId){
-			
+
+	//TODO: Add a caching mechanism, assumption is commentDB is external DataBase or a Table in DB
+	private List<Comment> getMoveViaChachedStrategy(final String movieId){
 		return commentDB
 				.stream()
 				.filter(c-> c.getMovieId().equals(movieId))
 				.collect(Collectors.toList());
 	}
 	
-	public int addComment(final Comment comment){
-		return getAllCommentsForMovie(comment.getMovieId())
+	
+	@Async
+	public Future<Pair<Integer, ?>>getAllCommentsForMovie(String movieId){
+		final List<Comment> comments = getMoveViaChachedStrategy(movieId); 
+		return new AsyncResult<>(Pair.of(200,comments));
+	}
+	
+
+	@Async
+	public Future<Pair<Integer, ?>> addComment(final Comment comment){
+		return getMoveViaChachedStrategy(comment.getMovieId())
 				.stream()
 				.filter(c -> c.getUserName().equals(comment.getUserName()))
 				.findFirst()
 				.isPresent()
-			? 409
-			: (commentDB.add(comment)) 
+			? new AsyncResult<>(Pair.of(409, null))
+			: new AsyncResult<>(Pair.of((commentDB.add(comment)) 
 				? 201 
-				: 500 ;
+				: 500, 
+				comment));
 	}	
 }

@@ -1,6 +1,8 @@
 package movies.kamudo.com.githab.comment;
 
-import java.util.List;
+import java.util.concurrent.Future;
+
+import org.apache.commons.lang3.tuple.Pair;
 
 public interface CommentService {
 
@@ -9,15 +11,20 @@ public interface CommentService {
 	 * @param movieId
 	 * @return List of comments associated with the movie
 	 */
-	List<Comment> getAllCommentsForMovie(String movieId);
+	Future<Pair<Integer, ?>> getAllCommentsForMovie(String movieId);
 	
 	/**
 	 * Adding new comment to "Comments DB"
 	 * @param comment
-	 * @return Success Code returned:  
-	 *  409 Conflict - returned if a given comment already exist for user/movie pair.
-	 *  500 Internal Error - returned if error during the add operation.
-	 *  201 Created - returned when new comment was successfully added.
+	 *
+	 * @return Pair <SuccessCode, List<Comment>>
+	 *  returned: 
+	 *  Success Code 
+	 *  	409 Conflict - returned if a given comment already exist for user/movie pair.
+	 *  	500 Internal Error - returned if error during the add operation.
+	 *  	201 Created - returned when new comment was successfully added.
+	 *  Comment Itself
 	 */
-	int addComment(final Comment comment);
+	
+	Future<Pair<Integer, ?>> addComment(final Comment comment);
 }
