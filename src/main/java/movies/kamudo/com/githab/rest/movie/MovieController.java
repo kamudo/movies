@@ -1,4 +1,4 @@
-package movies.kamudo.com.githab.movie;
+package movies.kamudo.com.githab.rest.movie;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

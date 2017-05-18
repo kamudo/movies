@@ -1,4 +1,4 @@
-package movies.kamudo.com.githab;
+package movies.kamudo.com.githab.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package movies.kamudo.com.githab.movie;
+package movies.kamudo.com.githab.rest.movie;
 
 import java.util.ArrayList;
 import java.util.Arrays;

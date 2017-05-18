@@ -1,4 +1,4 @@
-package movies.kamudo.com.githab.movieDetails;
+package movies.kamudo.com.githab.rest.movieDetails;
 
 import java.util.List;
 
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import movies.kamudo.com.githab.comment.Comment;
-import movies.kamudo.com.githab.comment.CommentService;
 import movies.kamudo.com.githab.common.CommonController;
-import movies.kamudo.com.githab.movie.Movie;
-import movies.kamudo.com.githab.movie.MovieService;
+import movies.kamudo.com.githab.rest.comment.Comment;
+import movies.kamudo.com.githab.rest.comment.CommentService;
+import movies.kamudo.com.githab.rest.movie.Movie;
+import movies.kamudo.com.githab.rest.movie.MovieService;
 
 @RestController
 public class MovieDetailsController extends CommonController{

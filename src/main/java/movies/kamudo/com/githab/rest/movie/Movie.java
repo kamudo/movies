@@ -1,4 +1,4 @@
-package movies.kamudo.com.githab.movie;
+package movies.kamudo.com.githab.rest.movie;
 
 public class Movie {
 

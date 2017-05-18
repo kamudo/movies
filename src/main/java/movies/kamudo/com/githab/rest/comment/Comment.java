@@ -1,4 +1,4 @@
-package movies.kamudo.com.githab.comment;
+package movies.kamudo.com.githab.rest.comment;
 
 public class Comment {
 

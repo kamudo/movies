@@ -1,9 +1,9 @@
-package movies.kamudo.com.githab.movieDetails;
+package movies.kamudo.com.githab.rest.movieDetails;
 
 import java.util.List;
 
-import movies.kamudo.com.githab.comment.Comment;
-import movies.kamudo.com.githab.movie.Movie;
+import movies.kamudo.com.githab.rest.comment.Comment;
+import movies.kamudo.com.githab.rest.movie.Movie;
 
 public class MovieDetailsWrapper {
 
